@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+from database.mysql import pool_mysql
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -15,6 +17,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    pool_mysql.init_app(app)
 
     @app.route('/')
     def index():

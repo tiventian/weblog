@@ -1,5 +1,9 @@
 import uuid
 
+from playhouse.flask_utils import FlaskDB
+
+pool_mysql = FlaskDB()
+
 
 def uuid_generator(_uuid=None):
     if not _uuid:
